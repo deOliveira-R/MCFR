@@ -2,13 +2,13 @@ set acelib "/afs/psi.ch/project/stars/archive/COD/SERP/SB-SERP-ACT-001-11/Librar
 set declib "/afs/psi.ch/project/stars/archive/COD/SERP/SB-SERP-ACT-001-11/Libraries/endfb7/sss_endfb7.dec"
 set nfylib "/afs/psi.ch/project/stars/archive/COD/SERP/SB-SERP-ACT-001-11/Libraries/endfb7/sss_endfb7.nfy"
 
-
-%%%%% POWER, NEUTRONS 
 set pop 3000 300 30
 set power 3e9 
 set ures 1
 
-%%%%% GEOMETRY
 include "../../data/fuel_40.serp"
 include "../../data/materials.serp" 
 include "geometry_40.serp"
+
+det spectrum du 0 de grid  
+ene grid 3 2000 1e-11 20
