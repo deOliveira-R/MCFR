@@ -11,4 +11,6 @@ include "../../data/materials.serp"
 include "geometry_40.serp"
 
 det spectrum du 0 de grid  
+det spectrum1 du 0 de grid2
+ene grid2 4 nj19 % ecco 33 groups
 ene grid 3 2000 1e-11 20
