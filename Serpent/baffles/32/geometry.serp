@@ -1,0 +1,18 @@
+set bc 1
+surf 1 cyl 0 0 350 -323 323
+surf 2 cyl 0 0 352 -325 325
+surf 3 cyl 0 0 452 -425 425
+
+surf 4 sqc 0 0  24.95 0.0
+surf 5 sqc 0 0  25.0 0.0
+
+cell 11 10 outside 5
+cell 12 10 hast  4 -5
+cell 13 10 fuel  -4
+
+lat lattice 6 0 0 50 10
+
+cell 0 0 outside  3
+cell 1 0 fill lattice    -1
+cell 2 0 hast     1 -2
+cell 3 0 lead     2 -3

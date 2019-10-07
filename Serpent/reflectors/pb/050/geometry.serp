@@ -1,0 +1,9 @@
+set bc 1
+surf 1 cyl 0 0 360 -330 330
+surf 2 cyl 0 0 362 -332 332
+surf 3 cyl 0 0 412 -382 382
+
+cell 0 0 outside  3
+cell 1 0 fuel    -1
+cell 2 0 hast     1 -2
+cell 3 0 lead2     2 -3
