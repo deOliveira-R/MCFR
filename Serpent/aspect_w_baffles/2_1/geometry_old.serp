@@ -1,11 +1,11 @@
 set bc 1
 
-surf 1  cyl    0  0 240 -480 480
-%surf 11 pz  -480
-%surf 12 pz   480
-surf 2  cyl    0  0 242  -482 482
-%surf 21 pz  -482
-%surf 22 pz   482
+surf 1  cyl    0  0 240
+surf 11 pz  -480
+surf 12 pz   480
+surf 2  cyl    0  0 242 % -482 482
+surf 21 pz  -482
+surf 22 pz   482
 surf 3  cyl    0  0 342 -582 582
 surf 4  sqc    0  0  24.95 0.0
 surf 5  sqc    0  0  25.0 0.0
@@ -22,6 +22,6 @@ cell 13 1 fill 9    -4
 lat   2 6 0 0 50 1  
 
 cell  0 0 outside   3
-cell  1 0 fill 2   -1 %11 -12
-cell 2  0 fill 8    1 -2 %11 -12 : -2 -11 21 : -2 12 -22 %12 -11 21 -22
-cell  3 0 fill 7    2 -3 %: 22 : -21 %22 -21
+cell  1 0 fill 2   -1 11 -12
+cell 2  0 fill 8    1 -2 11 -12 : -2 -11 21 : -2 12 -22 %12 -11 21 -22
+cell  3 0 fill 7    2 -3 : 22 : -21 %22 -21
