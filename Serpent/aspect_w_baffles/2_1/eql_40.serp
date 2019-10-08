@@ -10,6 +10,12 @@ include "../../data/fuel_40.serp"
 include "../../data/materials.serp" 
 include "geometry_40.serp"
 
+set nfg groupStruct
+ene groupStruct 3 8 1E-11 20  
+set alb 0 11 1 
+%set alb 0 12 1
+set gcu 0 9 8 7
+
 det flux du 0
 det spectrum du 0 de grid  
 det spectrum1 du 0 de grid2 dt 3 flux 
