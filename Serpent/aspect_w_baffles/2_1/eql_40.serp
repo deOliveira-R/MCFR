@@ -6,6 +6,9 @@ set pop 3000 300 30
 set power 3e9 
 set ures 1
 
+plot 2 3000 3000 
+plot 3 3000 3000 
+
 include "../../data/fuel_40.serp"
 include "../../data/materials.serp" 
 include "geometry_40.serp"
