@@ -1,0 +1,135 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "0.0004/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+15
+(
+    defaultFaces
+    {
+        type            empty;
+        inGroups        1(empty);
+        nFaces          3752;
+        startFace       1278211;
+    }
+    vessel
+    {
+        type            wall;
+        inGroups        2
+        (
+            clearWall
+            wall
+        );
+        nFaces          57183;
+        startFace       1281963;
+    }
+    inlet0
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          1929;
+        startFace       1339146;
+    }
+    inlet1
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          2649;
+        startFace       1341075;
+    }
+    inlet2
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          1934;
+        startFace       1343724;
+    }
+    inlet3
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          1929;
+        startFace       1345658;
+    }
+    inlet4
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          2653;
+        startFace       1347587;
+    }
+    inlet5
+    {
+        type            patch;
+        inGroups        1(inlet);
+        nFaces          1934;
+        startFace       1350240;
+    }
+    outlet0
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          829;
+        startFace       1352174;
+    }
+    outlet1
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          1111;
+        startFace       1353003;
+    }
+    outlet2
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          828;
+        startFace       1354114;
+    }
+    outlet3
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          829;
+        startFace       1354942;
+    }
+    outlet4
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          1109;
+        startFace       1355771;
+    }
+    outlet5
+    {
+        type            patch;
+        inGroups        1(outlet);
+        nFaces          828;
+        startFace       1356880;
+    }
+    baffle0
+    {
+        type            wall;
+        inGroups        2
+        (
+            wall
+            baffles
+        );
+        nFaces          118788;
+        startFace       1357708;
+    }
+)
+
+// ************************************************************************* //

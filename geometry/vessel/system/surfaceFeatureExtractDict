@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeatureExtractDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+vessel.stl
+{
+    surfaces
+    (
+        "vessel.stl"
+        // "circuit0_.*"
+    );
+
+    // Include defaults parameters from master dictionary
+    #include "$WM_PROJECT_DIR/etc/caseDicts/surface/surfaceFeatureExtractDict.cfg"
+}
+
+barrel.stl
+{
+    surfaces
+    (
+        "barrel.stl"
+        // "circuit0_.*"
+    );
+
+    // Include defaults parameters from master dictionary
+    #include "$WM_PROJECT_DIR/etc/caseDicts/surface/surfaceFeatureExtractDict.cfg"
+}
+
+// ************************************************************************* //
