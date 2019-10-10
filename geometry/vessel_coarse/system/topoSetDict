@@ -1,0 +1,64 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    vessel;
+        type    cellZoneSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-4 -4 -6) (4 4 6);
+        }
+    }
+
+    // {
+    //     name    hex0_body;
+    //     type    cellSet;
+    //     action  new;
+    //     source  boxToCell;
+    //     sourceInfo
+    //     {
+    //         box (-2.190 -0.338 -0.04) (-1.785 0.338 0.65);
+    //     }
+    // }
+    // {
+    //     name    hex0_body;
+    //     type    cellZoneSet;
+    //     action  new;
+    //     source  setToCellZone;
+    //     sourceInfo
+    //     {
+    //         set hex0_body;
+    //     }
+    // }
+
+    {
+        name    barrel;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface triSurfaceMesh;
+            name  barrel.stl;
+        }
+    }
+);
+
+// ************************************************************************* //
