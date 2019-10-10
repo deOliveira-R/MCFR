@@ -18,7 +18,7 @@ FoamFile
 application         singleSolver;
 
 startFrom           startTime;
-//startFrom           latestTime;
+// startFrom           latestTime;
 
 startTime           0;
 
@@ -32,12 +32,12 @@ adjustTimeStep      false;
 
 maxDeltaT           1.0;
 
-// writeControl        runTime;
-writeControl        timeStep;
-//writeControl        adjustableRunTime;
+writeControl        runTime;
+// writeControl        adjustableRunTime;
+// writeControl        timeStep;
 
-// writeInterval       0.2;
-writeInterval       1;
+writeInterval       0.2;
+// writeInterval       1;
 
 purgeWrite          2;
 

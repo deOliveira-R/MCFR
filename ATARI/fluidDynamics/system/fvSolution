@@ -39,11 +39,12 @@ solvers
         // tolerance       1e-6;
         // relTol          0.01;
 
-        solver           GAMG;
-        tolerance        1e-7;
-        relTol           0.01;
+        solver          GAMG;
+        tolerance       1e-7;
+        relTol          0.01;
 
-        smoother         GaussSeidel;
+        smoother        symGaussSeidel;
+        // smoother        FDIC;
 
         minIter         3;              // a minimum number of iterations
         maxIter         100;            // limitation of iterions number
@@ -54,7 +55,7 @@ solvers
         directSolveCoarsestLevel false; // false is fine
         cacheAgglomeration on;          // on is fine; set to off, if dynamic
                                         // mesh refinement is used!
-        nCellsInCoarsestLevel 2500;     // approximately sqrt(number of cells)
+        nCellsInCoarsestLevel 450;     // approximately sqrt(number of cells)
         agglomerator    faceAreaPair;   // faceAreaPair is fine
         mergeLevels     1;              // 1 is fine
     }
