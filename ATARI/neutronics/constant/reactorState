@@ -13,7 +13,6 @@ FoamFile
     location        "constant";
     object          reactorState;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 keff            1;
 

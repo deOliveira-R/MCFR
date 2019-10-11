@@ -1,7 +1,7 @@
 serpentCase = 'eql_40';
-zeroeff = 'zero';
+stateName = 'reference';
 coreState = 'R';
-rhoCoolRef = 3320; % 2988 10% less
+phyeff = 'phy';
 
 universeToZone = {
     '9','vessel'; % actually fuel. Need to harmonize notation later

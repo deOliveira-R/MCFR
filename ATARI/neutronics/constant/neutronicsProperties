@@ -17,10 +17,11 @@ FoamFile
 
 spatialKineticsModel    diffusion;
 
-crossSectionsModel      noParametrization;
+crossSectionsModel      nDimensional;
 
 branches
 (
+    rho
 );
 
 fissionProductsModel    staticSimple;

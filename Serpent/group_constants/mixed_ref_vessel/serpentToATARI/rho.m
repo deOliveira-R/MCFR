@@ -1,9 +1,15 @@
 serpentCase = 'eql_40';
-zeroeff = 'zero';
+coreState = 'B';
+phyeff = 'phy';
 reference = false;
-name = 'rho';
+stateName = 'rho';
 
 referenceValue = 3320;
+fieldName = 'rho';
+
+interpolationMode = 'linear';
+extrapolate = 'true';
+
 perturbedValue = 2988;
 
 universeToZone = {
