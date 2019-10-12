@@ -65,14 +65,10 @@ geometry
             inlet1 {name inlet1;}
             inlet2 {name inlet2;}
             inlet3 {name inlet3;}
-            inlet4 {name inlet4;}
-            inlet5 {name inlet5;}
             outlet0 {name outlet0;}
             outlet1 {name outlet1;}
             outlet2 {name outlet2;}
             outlet3 {name outlet3;}
-            outlet4 {name outlet4;}
-            outlet5 {name outlet5;}
         }
     }
 
@@ -187,14 +183,10 @@ castellatedMeshControls
                 inlet1  { level (0 2); patchInfo { type patch; inGroups (inlets); }}
                 inlet2  { level (0 2); patchInfo { type patch; inGroups (inlets); }}
                 inlet3  { level (0 2); patchInfo { type patch; inGroups (inlets); }}
-                inlet4  { level (0 2); patchInfo { type patch; inGroups (inlets); }}
-                inlet5  { level (0 2); patchInfo { type patch; inGroups (inlets); }}
                 outlet0 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
                 outlet1 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
                 outlet2 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
                 outlet3 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
-                outlet4 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
-                outlet5 { level (0 2); patchInfo { type patch; inGroups (outlets); }}
             }
         }
 

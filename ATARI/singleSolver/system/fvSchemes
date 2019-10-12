@@ -1,0 +1,101 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default none;
+    ddt(fluidPorous:fluidFraction,p_rgh)       Euler;
+    ddt(fluidPorous:fluidFraction,rho)         Euler;
+    ddt(rho,U)                              Euler;
+
+    ddt((fluidPorous:fluidFraction*rho),h)     Euler;
+    ddt((fluidPorous:fluidFraction*rho),K)     Euler;
+
+    ddt(fluidPorous:rhoCp,TStructures)   Euler;
+
+    ddt(rho,epsilon)                        Euler;
+    ddt(rho,k)                              Euler;
+}
+
+gradSchemes
+{
+    // <optional limiter> Gauss <interpolation scheme>
+    default Gauss linear;
+    grad(U)             Gauss linear;
+    grad(p_rgh)         Gauss linear;
+    grad((rho*rhok))    Gauss linear;
+    grad(h)             Gauss linear;
+}
+
+divSchemes
+{
+    // Gauss <interpolation scheme>
+    default none;
+    div(phi,U)          Gauss upwind;
+    div(phiByGamma,U)   Gauss upwind;
+    div(phi,K)          Gauss upwind;
+    div(phi,h)          Gauss upwind;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+
+    div(phi,epsilon)    Gauss upwind;
+    div(phi,k)          Gauss upwind;
+}
+
+laplacianSchemes
+{
+    // Gauss <interpolation scheme> <snGradScheme>
+    default none;
+    laplacian((rho*nuEff),U)        Gauss linear orthogonal;
+    laplacian(rhorAUf,p_rgh)        Gauss linear orthogonal;
+    laplacian(thermo:alpha,h)       Gauss linear orthogonal;
+    laplacian(alphahe,h)            Gauss linear orthogonal;
+
+    laplacian(alphaEff,h)           Gauss linear orthogonal;
+    laplacian((rho*DepsilonEff),epsilon)    Gauss linear orthogonal;
+    laplacian((rho*DkEff),k)        Gauss linear orthogonal;
+
+    laplacian((D|discFactor),discFlux)      Gauss linear orthogonal;
+    laplacian(Dmass,precursor)              Gauss linear orthogonal;
+}
+
+interpolationSchemes
+{
+    default none;
+    interpolate(rho_0)                  linear;
+    interpolate(fluidPorous:fluidFraction) linear;
+    interpolate(((fluidPorous:fluidFraction*rho)*rAU)) linear;
+    dotInterpolate(S,(rho_0*U_0))       linear;
+    flux((rho*HbyA))                    linear;
+
+    interpolate(rho)                    linear;
+}
+
+snGradSchemes
+{
+    default orthogonal;
+    //snGrad(p_rgh)       orthogonal;
+    //snGrad((rho*rhok))  orthogonal;
+}
+
+fluxRequired
+{
+    default false;
+    p_rgh;
+}
+
+
+// ************************************************************************* //

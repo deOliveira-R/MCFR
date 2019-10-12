@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+# cleanCase # This also deleted the polyMesh
+cleanTimeDirectories
+
+foamDictionary -entry keff -set 1.0 constant/region0/neutronTransport/reactorState
+
+rm -f *.dat *.foam
+rm -rf processor*

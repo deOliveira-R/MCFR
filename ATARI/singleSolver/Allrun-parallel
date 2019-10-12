@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+./Allrun.pre
+
+# Decompose case, run and reconstruct
+
+runApplication decomposePar -copyZero
+runParallel $(getApplication)
+runApplication reconstructPar
+
+ret=$?
+if [$ret -eq 0]; then
+    rm -rf processor*
+fi
