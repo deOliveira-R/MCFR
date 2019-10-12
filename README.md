@@ -1,13 +1,13 @@
 # MCBR
-Design studies of molten salt breeder reactor
+Design studies of molten chloride breeder reactor
 
 CAD design to be found at:
-Vessel https://a360.co/2VpVBIQ
-HEX: https://a360.co/3362RfQ
+- Vessel with [6 inlets/outlets](https://a360.co/2VpVBIQ)
+- Vessel with [4 inlets/outlets](https://a360.co/2osxMo2)
+- [Heat exchanger](https://a360.co/3362RfQ)
 
 
 Data for future reference:
-https://www.ge.com/power/gas/gas-turbines
-https://www.ge.com/power/steam/steam-turbines
-
-https://www.heatric.com/heat-exchangers/features/characteristics
+- GE [Gas turbines](https://www.ge.com/power/gas/gas-turbines)
+- GE [Steam turbines](https://www.ge.com/power/steam/steam-turbines)
+- Heatric printed circuit heat exchanger [characteristics](https://www.heatric.com/heat-exchangers/features/characteristics)
