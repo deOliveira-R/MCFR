@@ -9,11 +9,12 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 # Decompose case, run and reconstruct
 
-runApplication decomposePar -copyZero
+runApplication    decomposePar -latestTime
+runApplication -a decomposePar -latestTime -region region0/neutronTransport
 runParallel $(getApplication)
 runApplication reconstructPar
 
-ret=$?
-if [$ret -eq 0]; then
-    rm -rf processor*
-fi
+# ret=$?
+# if [$ret -eq 0]; then
+#     rm -rf processor*
+# fi
