@@ -36,7 +36,7 @@ mixture
     }
     equationOfState
     {
-        rho     3320;   // density: kg/m3 at 700 C
+        rho     3320;   // density: kg/m3
     }
     thermodynamics
     {
@@ -47,7 +47,7 @@ mixture
     transport
     {
         // mu      50;
-        mu      2.536e-2;     // dynamic viscosity: Pa.s or kg/(m.s) at 700 C
+        mu      2.536e-2;     // dynamic viscosity: Pa.s or kg/(m.s)
         Pr      1.511e1;      // Prandtl number: (Cp.mu)/k
     }
 }

@@ -17,21 +17,21 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 900;
+internalField   uniform 923;
 
 boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
-
+    
     ".*"
     {
         type            zeroGradient;
     }
 
-    "inlet.*"
+    inlets
     {
         type                fixedValue;
-        value               uniform 900;
+        value               $internalField;
     }
 }
 

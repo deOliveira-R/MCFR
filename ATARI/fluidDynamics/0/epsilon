@@ -28,18 +28,13 @@ boundaryField
         type            epsilonWallFunction;
         value           $internalField;
     }
-    // "(pump|hex_body).*"
-    // "hex_body.*"
-    // {
-    //     type            zeroGradient;
-    // }
 
-    "outlet.*"
+    outlets
     {
         type            zeroGradient;
     }
 
-    "inlet.*"
+    inlets
     {
         type            zeroGradient;
     }

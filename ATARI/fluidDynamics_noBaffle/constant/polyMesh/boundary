@@ -1,0 +1,104 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "0.0003/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+10
+(
+    vessel
+    {
+        type            wall;
+        inGroups        
+2
+(
+clearWall
+wall
+)
+;
+        nFaces          17402;
+        startFace       403053;
+    }
+    inlet0
+    {
+        type            patch;
+        inGroups        1(inlets);
+        nFaces          312;
+        startFace       420455;
+    }
+    inlet1
+    {
+        type            patch;
+        inGroups        1(inlets);
+        nFaces          312;
+        startFace       420767;
+    }
+    inlet2
+    {
+        type            patch;
+        inGroups        1(inlets);
+        nFaces          312;
+        startFace       421079;
+    }
+    inlet3
+    {
+        type            patch;
+        inGroups        1(inlets);
+        nFaces          312;
+        startFace       421391;
+    }
+    outlet0
+    {
+        type            patch;
+        inGroups        1(outlets);
+        nFaces          150;
+        startFace       421703;
+    }
+    outlet1
+    {
+        type            patch;
+        inGroups        1(outlets);
+        nFaces          150;
+        startFace       421853;
+    }
+    outlet2
+    {
+        type            patch;
+        inGroups        1(outlets);
+        nFaces          150;
+        startFace       422003;
+    }
+    outlet3
+    {
+        type            patch;
+        inGroups        1(outlets);
+        nFaces          150;
+        startFace       422153;
+    }
+    baffle0
+    {
+        type            wall;
+        inGroups        
+2
+(
+wall
+baffles
+)
+;
+        nFaces          31328;
+        startFace       422303;
+    }
+)
+
+// ************************************************************************* //

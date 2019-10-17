@@ -27,19 +27,15 @@ boundaryField
     {
         type            noSlip;
     }
-    // "(pump|hex).*"
-    // {
-    //     type            slip;
-    // }
 
-    "outlet.*"
+    outlets
     {
         type            inletOutlet;
         value           $internalField;
         inletValue      $internalField;
     }
 
-    "inlet.*"
+    inlets
     {
         type                flowRateInletVelocity;
         massFlowRate        3200;

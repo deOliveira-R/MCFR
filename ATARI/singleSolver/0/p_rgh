@@ -23,12 +23,6 @@ boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
-    // plenum
-    // {
-    //     type            fixedValue;
-    //     value           $internalField;
-    // }
-
     ".*"
     {
         type            zeroGradient;
@@ -36,13 +30,13 @@ boundaryField
         // value           $internalField;
     }
 
-    "outlet.*"
+    outlets
     {
         type            fixedValue;
         value           $internalField;
     }
 
-    "inlet.*"
+    inlets
     {
         type            fixedFluxExtrapolatedPressure;
     }
