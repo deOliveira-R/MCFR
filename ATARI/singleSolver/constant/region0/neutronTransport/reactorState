@@ -7,15 +7,14 @@
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "constant/region0/neutronTransport";
-    object      reactorState;
+    version         2;
+    format          ascii;
+    class           dictionary;
+    location        "constant/region0/neutronTransport";
+    object          reactorState;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-keff            0.9730694;
+keff            1;
 
 normalizationPower 3e+09;
 
