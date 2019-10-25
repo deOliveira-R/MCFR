@@ -24,7 +24,7 @@ branches
     rho
 );
 
-fissionProductsModel    staticSimple;
+fissionProductsModel    advectingSimple;
 
 transient               false;
 

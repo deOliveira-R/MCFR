@@ -27,6 +27,19 @@ actions
         }
     }
 
+    {
+        name    barrel;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface triSurfaceMesh;
+            name  barrel.stl;
+        }
+    }
+
+    // Prototype for adding heat exchangers
     // {
     //     name    hex0_body;
     //     type    cellSet;
@@ -47,18 +60,6 @@ actions
     //         set hex0_body;
     //     }
     // }
-
-    {
-        name    barrel;
-        type    faceZoneSet;
-        action  new;
-        source  searchableSurfaceToFaceZone;
-        sourceInfo
-        {
-            surface triSurfaceMesh;
-            name  barrel.stl;
-        }
-    }
 );
 
 // ************************************************************************* //
