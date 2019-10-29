@@ -6,8 +6,8 @@ set pop 5000 500 100
 set power 3e9 
 set ures 1
 
- plot 2 684 1164 
- plot 3 684 684 
+ plot 2 1368 2328
+ plot 3 1368 1368
 
 include "../data/fuel_40.serp"
 include "../data/materials.serp" 
