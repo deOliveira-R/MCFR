@@ -9,9 +9,9 @@ set ures 1
 %plot 2 3000 3000 
 %plot 3 3000 3000 
 
-include "../../data/fuel_40.serp"
+include "./fuel_40.serp"
 include "../../data/materials.serp" 
-include "geometry_40.serp"
+include "../geometry_mixed.serp"
 
 set nfg groupStruct
 ene groupStruct 3 8 1E-11 20  

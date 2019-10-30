@@ -6,22 +6,9 @@ set pop 5000 500 100
 set power 3e9
 set ures 1
 
-plot 2 5472 10944
-plot 3 5472 5472
+plot 2 1368 2328
+plot 3 1368 1368
 
-include "../../data/fuel_40.serp"
-include "../../data/materials.serp"
+include "../data/fuel_40.serp"
+include "../data/materials.serp"
 include "geometry_40.serp"
-
-set nfg groupStruct
-ene groupStruct 3 8 1E-11 20
-%set alb 0 11 1
-%set alb 0 12 1
-set gcu 0 9 8 7
-
-%det flux du 0
-%det spectrum du 0 de grid
-%det spectrum1 du 0 de grid2 dt 3 flux
-%det spectrum2 du 0 de grid2 dt -3
-%ene grid2 4 nj19 % ecco 33 groups
-%ene grid 3 2000 1e-11 20
