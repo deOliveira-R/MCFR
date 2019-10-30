@@ -1,4 +1,4 @@
-mat fuel sum burn 1 vol 5.375130e+07
+mat fuel sum burn 1 vol 5.375130e+07 rgb 146 255 74
 H-1.09c 1.107660e-13
 H-2.09c 1.177909e-15
 H-3.09c 1.615279e-17
