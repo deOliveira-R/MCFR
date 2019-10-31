@@ -6,8 +6,9 @@ set pop 5000 500 100
 set power 3e9
 set ures 1
 
-plot 2 5472 10944
-plot 3 5472 5472
+% must be off number of pixels for the central baffle to appear
+plot 2 5473 10945
+plot 3 5473 5473
 
 include "../../data/fuel_40.serp"
 include "../../data/materials.serp"
