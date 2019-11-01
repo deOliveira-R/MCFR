@@ -6,7 +6,7 @@ set pop 5000 500 100
 set power 3e9 
 set ures 1
 
-include "../../data/fuel_40.serp"
-include "../../data/materials.serp" 
+include "../data/fuel_40.serp"
+include "../data/materials.serp" 
 include "geometry_40.serp"
 
