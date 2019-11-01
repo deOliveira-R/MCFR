@@ -2,13 +2,14 @@ mat lead -10.3
 Pb-nat.03c 100
 
 mat pbo -9.53
+rgb 255 216 23
 Pb-nat.03c 1
 O-16.03c   1
 
 mat hast -10.0
 rgb 180 180 180
 Ni-nat.09c   79.432
-W-nat.09c     9.976 
+W-nat.09c     9.976
 Cr-nat.09c    8.014
 
 mat lead2 -10.3

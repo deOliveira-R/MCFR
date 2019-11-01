@@ -18,7 +18,7 @@ FoamFile
 // Which of the steps to run
 castellatedMesh true;
 snap            true;
-addLayers       false;
+addLayers       true;
 
 
 // Geometry. Definition of all surfaces. All surfaces are of class
@@ -195,11 +195,12 @@ castellatedMeshControls
         //     // level (2 3);
         //     level (0 2);
         //
-        //     faceZone    barrel;
-        //     faceType    baffle;
+        //     faceZone    barrel; // name of the baffle patch
+        //     // faceType    baffle;
+        //     faceType    boundary;
         //
-        //     cellZone    barrel;
-        //     cellZoneInside  none;
+        //     // cellZone    barrel;
+        //     // cellZoneInside  none;
         // }
     }
 
@@ -298,10 +299,8 @@ addLayersControls
     // Per final patch (so not geometry!) the layer information
     layers
     {
-        vessel
-        {
-            nSurfaceLayers 2;
-        }
+        vessel { nSurfaceLayers 2; }
+        // barrel { nSurfaceLayers 2; }
     }
 
     // Expansion factor for layer mesh
@@ -311,7 +310,9 @@ addLayersControls
     // Wanted thickness of final added cell layer. If multiple layers
     // is the thickness of the layer furthest away from the wall.
     // See relativeSizes parameter.
-    finalLayerThickness 0.002;
+    // finalLayerThickness 0.006; // layers at the pipes only
+    // finalLayerThickness 0.008; // vessel partialy covered
+    finalLayerThickness 0.010; // vessel fully covered
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
