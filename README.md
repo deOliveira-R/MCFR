@@ -1,5 +1,5 @@
-# MCBR
-Design studies of molten chloride breeder reactor
+# MCFR
+Design studies of molten chloride fast reactor with breed and burn capabilities
 
 CAD design to be found at:
 - Vessel with [6 inlets/outlets](https://a360.co/2VpVBIQ)
