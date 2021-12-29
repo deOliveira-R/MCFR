@@ -8,17 +8,38 @@ from paraview.simple import *
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
+
+def save(file):
+    SaveScreenshot(path + file,
+                   renderView1,
+                   ImageResolution=resolution,
+                   TransparentBackground=1)
+
+
 path = '/Users/rodrigo/git/nuclear/MCBR/ATARI/singleSolver/'
-resolution = [1620, 1276]
 
-# get active source.
-singleSolver = GetActiveSource()
+resolution = [800, 1700]
+legend_position = [0.15, 0.1]
+legend_length = 0.7
 
-# Properties modified on singleSolverfoam
+title_color = [0.0, 0.0, 0.0]
+title_font_size = 42
+label_color = title_color
+label_font_size = title_font_size
+scalar_bar_thickness = title_font_size
+
+text_position = 'Ticks left/bottom, annotations right/top'
+
+# create a new 'OpenFOAMReader'
+singleSolver = OpenFOAMReader(registrationName='singleSolver.foam', FileName=path + 'singleSolver.foam')
 singleSolver.MeshRegions = ['internalMesh']
+singleSolver.CellArrays = ['Co', 'T', 'TStructures', 'U', 'alphat', 'disp', 'epsilon', 'fluidPorous:USGS', 'k', 'nut', 'p', 'p_rgh', 'rho', 'rhoRhok', 'rhok', 'volPowerFuel']
 
 # get animation scene
 animationScene1 = GetAnimationScene()
+
+# update animation scene based on data timesteps
+animationScene1.UpdateAnimationUsingDataTimeSteps()
 
 # get the time-keeper
 timeKeeper1 = GetTimeKeeper()
@@ -31,7 +52,7 @@ renderView1 = GetActiveViewOrCreate('RenderView')
 renderView1.ViewSize = resolution
 
 # show data in view
-singleSolverDisplay = Show(singleSolver, renderView1)
+singleSolverDisplay = Show(singleSolver, renderView1, 'UnstructuredGridRepresentation')
 
 # get color transfer function/color map for 'p'
 pLUT = GetColorTransferFunction('p')
@@ -155,18 +176,22 @@ TPWF = GetOpacityTransferFunction('T')
 TLUTColorBar = GetScalarBar(TLUT, renderView1)
 
 # Properties modified on uLUTColorBar
-TLUTColorBar.Title = 'temperature (K)'
-TLUTColorBar.TitleColor = [0.0, 0.0, 0.0]
-TLUTColorBar.TitleFontSize = 20
-TLUTColorBar.LabelColor = [0.0, 0.0, 0.0]
-TLUTColorBar.LabelFontSize = 20
-TLUTColorBar.UseCustomLabels = 1
-TLUTColorBar.CustomLabels = [1070, 1050, 1030, 1010, 990, 970, 950]
-
-# change scalar bar placement
+TLUTColorBar.Orientation = 'Horizontal'
 TLUTColorBar.WindowLocation = 'AnyLocation'
-TLUTColorBar.Position = [0.7, 0.3]
-TLUTColorBar.ScalarBarLength = 0.4
+TLUTColorBar.Position = legend_position
+TLUTColorBar.Title = 'Temperature (K)'
+TLUTColorBar.TitleColor = title_color
+TLUTColorBar.TitleFontSize = title_font_size
+TLUTColorBar.LabelColor = label_color
+TLUTColorBar.LabelFontSize = label_font_size
+# TLUTColorBar.AutomaticLabelFormat = 0
+# TLUTColorBar.LabelFormat = '%-#6.1f'
+TLUTColorBar.RangeLabelFormat = '%-#6.f'
+TLUTColorBar.UseCustomLabels = 1
+TLUTColorBar.CustomLabels = [1050, 1010, 970]
+TLUTColorBar.TextPosition = text_position
+TLUTColorBar.ScalarBarThickness = scalar_bar_thickness
+TLUTColorBar.ScalarBarLength = legend_length
 
 # set active source
 SetActiveSource(singleSolver)
@@ -175,9 +200,10 @@ SetActiveSource(singleSolver)
 renderView1.ResetCamera()
 
 # current camera placement for renderView1
-renderView1.CameraPosition = [22.946229828214705, 0.0, 0.0]
+renderView1.CameraPosition = [27.0, 0.0, -0.8]
+renderView1.CameraFocalPoint = [0.0, 0.0, -0.8]
 renderView1.CameraViewUp = [0.0, 0.0, 1.0]
-renderView1.CameraParallelScale = 7.186094764338226
+renderView1.CameraParallelScale = 7.0
 
 # save screenshot
 SaveScreenshot(path + 'T.png', renderView1, ImageResolution=resolution,
@@ -211,19 +237,21 @@ uPWF.RescaleTransferFunction(0.00275658128745, 1.0)
 uLUTColorBar = GetScalarBar(uLUT, renderView1)
 
 # Properties modified on uLUTColorBar
-uLUTColorBar.Title = 'velocity (m/s)'
-uLUTColorBar.ComponentTitle = 'magnitude'
-uLUTColorBar.TitleColor = [0.0, 0.0, 0.0]
-uLUTColorBar.TitleFontSize = 20
-uLUTColorBar.LabelColor = [0.0, 0.0, 0.0]
-uLUTColorBar.LabelFontSize = 20
-uLUTColorBar.UseCustomLabels = 1
-uLUTColorBar.CustomLabels = [1.0, 0.8, 0.6, 0.4, 0.2]
-
-# change scalar bar placement
+uLUTColorBar.Orientation = 'Horizontal'
 uLUTColorBar.WindowLocation = 'AnyLocation'
-uLUTColorBar.Position = [0.7, 0.3]
-uLUTColorBar.ScalarBarLength = 0.4
+uLUTColorBar.Position = legend_position
+uLUTColorBar.Title = 'Velocity ($ \mathrm{m} \, \mathrm{s}^{-1} $)'
+uLUTColorBar.ComponentTitle = 'magnitude'
+uLUTColorBar.TitleColor = title_color
+uLUTColorBar.TitleFontSize = title_font_size
+uLUTColorBar.LabelColor = label_color
+uLUTColorBar.LabelFontSize = label_font_size
+uLUTColorBar.RangeLabelFormat = '%-#6.1f'
+uLUTColorBar.UseCustomLabels = 1
+uLUTColorBar.CustomLabels = [0.8, 0.6, 0.4, 0.2]
+uLUTColorBar.TextPosition = text_position
+uLUTColorBar.ScalarBarThickness = scalar_bar_thickness
+uLUTColorBar.ScalarBarLength = legend_length
 
 # create a new 'Glyph'
 glyph1 = Glyph(Input=slice1,

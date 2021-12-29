@@ -8,10 +8,41 @@ from paraview.simple import *
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
+
+def save(file):
+    SaveScreenshot(path + file,
+                   renderView1,
+                   ImageResolution=resolution,
+                   TransparentBackground=1)
+
+
 path = '/Users/rodrigo/git/nuclear/MCBR/ATARI/fluidDynamics/'
 
+resolution = [800, 1700]
+orientation = 'Horizontal'
+legend_position = [0.15, 0.1]
+legend_length = 0.7
+text_position = 'Ticks left/bottom, annotations right/top'
+
+# resolution = [800, 900]
+# orientation = 'Vertical'
+# legend_position = [0.6, 0.3]
+# legend_length = 0.4
+# text_position = 'Ticks right/top, annotations left/bottom'
+
+title_color = [0.0, 0.0, 0.0]
+title_font_size = 42
+label_color = title_color
+label_font_size = title_font_size
+scalar_bar_thickness = title_font_size
+
+# create a new 'OpenFOAMReader'
+fluidDynamics = OpenFOAMReader(registrationName='fluidDynamics.foam', FileName=path + 'fluidDynamics.foam')
+fluidDynamics.MeshRegions = ['internalMesh']
+fluidDynamics.CellArrays = ['Co', 'T', 'TStructures', 'U', 'alphat', 'disp', 'epsilon', 'fluidPorous:USGS', 'k', 'nut', 'p', 'p_rgh', 'rho', 'rhoRhok', 'rhok']
+
 # get active source.
-fluidDynamics = GetActiveSource()
+# fluidDynamics = GetActiveSource()
 
 # get animation scene
 animationScene1 = GetAnimationScene()
@@ -24,7 +55,7 @@ animationScene1.GoToLast()
 # get active view
 renderView1 = GetActiveViewOrCreate('RenderView')
 # uncomment following to set a specific view size
-renderView1.ViewSize = [1620, 1276]
+renderView1.ViewSize = resolution
 
 # show data in view
 fluidDynamicsDisplay = Show(fluidDynamics, renderView1)
@@ -151,19 +182,20 @@ renderView1.OrientationAxesVisibility = 0
 nutLUTColorBar = GetScalarBar(nutLUT, renderView1)
 
 # Properties modified on nutLUTColorBar
-nutLUTColorBar.Title = 'eddy viscosity (m2/s)'
-nutLUTColorBar.TitleColor = [0.0, 0.0, 0.0]
-nutLUTColorBar.TitleFontSize = 20
-nutLUTColorBar.LabelColor = [0.0, 0.0, 0.0]
-nutLUTColorBar.LabelFontSize = 20
+nutLUTColorBar.Orientation = orientation
+nutLUTColorBar.WindowLocation = 'AnyLocation'
+nutLUTColorBar.Position = legend_position
+nutLUTColorBar.Title = 'Eddy Viscosity ($ \mathrm{m}^{2} \, \mathrm{s}^{-1} $)'
+nutLUTColorBar.TitleColor = title_color
+nutLUTColorBar.TitleFontSize = title_font_size
+nutLUTColorBar.LabelColor = label_color
+nutLUTColorBar.LabelFontSize = label_font_size
 nutLUTColorBar.RangeLabelFormat = '%-#6.2g'
 nutLUTColorBar.UseCustomLabels = 1
-nutLUTColorBar.CustomLabels = [0.015, 0.012, 0.01, 0.008, 0.006, 0.004, 0.002]
-
-# change scalar bar placement
-nutLUTColorBar.WindowLocation = 'AnyLocation'
-nutLUTColorBar.Position = [0.7, 0.3]
-nutLUTColorBar.ScalarBarLength = 0.4
+nutLUTColorBar.CustomLabels = [0.012, 0.009, 0.006, 0.003]
+nutLUTColorBar.TextPosition = text_position
+nutLUTColorBar.ScalarBarThickness = scalar_bar_thickness
+nutLUTColorBar.ScalarBarLength = legend_length
 
 # set active source
 SetActiveSource(fluidDynamics)
@@ -172,17 +204,22 @@ SetActiveSource(fluidDynamics)
 renderView1.ResetCamera()
 
 # current camera placement for renderView1
-renderView1.CameraPosition = [22.946229828214705, 0.0, 0.0]
+# renderView1.CameraPosition = [23.0, 2.0, 0.0]
+# renderView1.CameraFocalPoint = [0.0, 2.0, 0.0]
+# renderView1.CameraViewUp = [0.0, 0.0, 1.0]
+# renderView1.CameraParallelScale = 7.0
+
+renderView1.CameraPosition = [27.0, 0.0, -0.8]
+renderView1.CameraFocalPoint = [0.0, 0.0, -0.8]
 renderView1.CameraViewUp = [0.0, 0.0, 1.0]
-renderView1.CameraParallelScale = 7.186094764338226
+renderView1.CameraParallelScale = 7.0
 
 # save screenshot
-SaveScreenshot(path + 'nut.png', renderView1, ImageResolution=[1620, 1276],
-    TransparentBackground=1)
+save('nut.png')
 
 # create a new 'Stream Tracer'
 streamTracer1 = StreamTracer(Input=fluidDynamics,
-    SeedType='Point Source')
+    SeedType='Point Cloud')
 streamTracer1.Vectors = ['POINTS', 'U']
 streamTracer1.MaximumStreamlineLength = 11.599992752075195
 
@@ -258,21 +295,9 @@ fluidDynamicsDisplay.Opacity = 0.2
 fluidDynamicsDisplay = Show(fluidDynamics, renderView1)
 
 # current camera placement for renderView1
-renderView1.CameraPosition = [22.946229828214705, 0.0, 0.0]
-renderView1.CameraViewUp = [0.0, 0.0, 1.0]
-renderView1.CameraParallelScale = 7.186094764338226
+# renderView1.CameraPosition = [22.946229828214705, 0.0, 0.0]
+# renderView1.CameraViewUp = [0.0, 0.0, 1.0]
+# renderView1.CameraParallelScale = 7.186094764338226
 
 # save screenshot
-SaveScreenshot(path + 'st.png', renderView1, ImageResolution=[1620, 1276],
-    TransparentBackground=1)
-
-#### saving camera placements for all active views
-
-# current camera placement for renderView1
-renderView1.CameraPosition = [22.946229828214705, 0.0, 0.0]
-renderView1.CameraViewUp = [0.0, 0.0, 1.0]
-renderView1.CameraParallelScale = 7.186094764338226
-
-#### uncomment the following to render all views
-# RenderAllViews()
-# alternatively, if you want to write images, you can use SaveScreenshot(...).
+save('st.png')

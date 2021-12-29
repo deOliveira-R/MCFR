@@ -1,0 +1,203 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    downcomer;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/downcomer.stl";
+            outsidePoints   ( (0 0 0) (0 0 5.5) );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    downcomer;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set downcomer;
+        }
+    }
+
+    {
+        name    inlet_plenum;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/inlet_plenum.stl";
+            outsidePoints
+            (
+                (0 0 0)
+                (-2.6  0   3.9)
+                ( 2.6  0   3.9)
+                ( 0   -2.6 3.9)
+                ( 0    2.6 3.9)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    downcomer_plenum;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/downcomer_plenum.stl";
+            outsidePoints
+            (
+                (0 0 0)
+                (0 0 5.5)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    core;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/core.stl";
+            outsidePoints
+            (
+                (0 0 4.5)
+                (0 0 -5.5)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    core_plenum;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/core_plenum.stl";
+            outsidePoints
+            (
+                (0 0 0)
+                (-2.6  0   3.5)
+                ( 2.6  0   3.5)
+                ( 0   -2.6 3.5)
+                ( 0    2.6 3.5)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    outlets;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/outlets.stl";
+            outsidePoints
+            (
+                (0 0 0)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    {
+        name    inlets;
+        type    cellSet;
+        action  new;
+        source  surfaceToCell;
+        sourceInfo
+        {
+            file            "constant/triSurface/inlets.stl";
+            outsidePoints
+            (
+                (0 0 5.5)
+            );
+            includeCut      true;
+            includeInside   true;
+            includeOutside  false;
+            nearDistance    0.1;
+            curvature       0.3;
+        }
+    }
+
+    // {
+    //     name    barrel;
+    //     type    faceZoneSet;
+    //     action  new;
+    //     source  searchableSurfaceToFaceZone;
+    //     sourceInfo
+    //     {
+    //         surface triSurfaceMesh;
+    //         name  barrel.stl;
+    //     }
+    // }
+
+    // Prototype for adding heat exchangers
+    // {
+    //     name    hex0_body;
+    //     type    cellSet;
+    //     action  new;
+    //     source  boxToCell;
+    //     sourceInfo
+    //     {
+    //         box (-2.190 -0.338 -0.04) (-1.785 0.338 0.65);
+    //     }
+    // }
+
+);
+
+// ************************************************************************* //
